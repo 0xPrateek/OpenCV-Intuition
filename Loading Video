@@ -1,0 +1,23 @@
+import cv2
+import numpy as ns
+
+#Ceating a video capture object for accessing frames form webcam
+cap=cv2.VideoCapture(0)
+
+while(cap.isOpened()):
+
+    #read() will return two values 1- Boolean for telling that frame loaded succesfully or not
+    # 2- The image from webcam
+
+    ret,frame=cap.read()
+
+    #Showing the image using imshow()
+    cv2.imshow("Live Video ",frame)
+
+    if cv2.waitKey(5) & 0xFF == ord('q'):
+        print("Exiting the program")
+        break
+
+#Releasing the VideoCapture object.
+cap.release()
+cv2.destroyAllWindows()
