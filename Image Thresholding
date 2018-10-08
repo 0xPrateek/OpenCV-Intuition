@@ -1,0 +1,24 @@
+import cv2
+import numpy as ns
+
+img=cv2.imread("SampleImage.jpg",0)
+while True:
+    cv2.imshow("My Image ",img)
+    
+    #Simple Thresholding
+    ret,simple=cv2.threshold(img,127,255,cv2.THRESH_BINARY)
+    cv2.imshow("Simple Thresholding",simple)
+
+    #Adaptive Thresholding
+    adaptive=cv2.adaptiveThreshold(img,255,cv2.ADAPTIVE_THRESH_MEAN_C,cv2.THRESH_BINARY,11,2)
+    cv2.imshow("Adaptive Thresholding",adaptive)
+
+    # Otsu's Thresholding
+    blur = cv2.GaussianBlur(img, (5, 5), 0)
+    ret1, otsu = cv2.threshold(blur, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)
+    cv2.imshow("Otsu's Thresholding",otsu)
+
+    if cv2.waitKey(1) & 0xFF == 27:
+        break
+
+cv2.destroyAllWindows()
