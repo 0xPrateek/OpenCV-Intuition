@@ -1,0 +1,29 @@
+import cv2
+
+# Draw function will be executed whenever the mouse event is triggered.
+def draw (event,x,y,params,flag):
+    
+    # Checking for the Left mouse button click event.
+    if event == cv2.EVENT_LBUTTONDBLCLK:
+        print("Button clicked")
+        #Drawing circle when the button is clicked.
+        cv2.circle(img, (x, y), 50, (255, 0, 0))
+
+if __name__ == "__main__":
+    
+    # Opening the image.
+    img =cv2.imread('SampleImage.jpg', 0)
+    
+    # Giving Image window a Name.
+    cv2.namedWindow('Image')
+    
+    # Associating mouse call back function to the window we named in earlier step.
+    # Passing two values , 1- Window name . 2- Function to trigger on mouse event.
+    cv2.setMouseCallback('Image',draw)     
+
+    while True:
+        cv2.imshow('Image', img)
+        
+        if cv2.waitKey(1) & 0xFF == 27:
+            break
+    cv2.destroyAllWindows()
