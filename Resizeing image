@@ -1,0 +1,15 @@
+import cv2
+import numpy as np
+
+img=cv2.imread("gameboy.jpg",0)                       # Loading image in grayscale
+res=cv2.resize(img,None,fx=1/2,fy=1/2,interpolation=cv2.INTER_CUBIC)    # Resizeing image to it's half of it's original height and width
+simple_res =cv2.resize(img,(200,200))                 # This way also you can resize the image to any size
+
+while True:           # Displaying resized image.
+
+    img=cv2.imshow('Image',img)
+    cv2.imshow('new',res)
+    cv2.imshow('simple', simple_res)
+    if cv2.waitKey(0) & 0xFF ==27:
+        break
+cv2.destroyAllWindows()
