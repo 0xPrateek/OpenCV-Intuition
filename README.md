@@ -1,5 +1,7 @@
 ## OpenCV3: Computer Vision Using Python 3
 
+This repositoriy contains all the study i am pursing in openCV and these programs are part of it.
+
 ### Resources
 
 * Homepage: <https://opencv.org>
