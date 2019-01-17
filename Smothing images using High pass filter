@@ -1,0 +1,23 @@
+import cv2
+import numpy as ns
+
+img=cv2.imread('SampleImage.jpg',0)       #Reading image in grayscale
+
+new_img=cv2.erode(img,(5,5))
+kernel=ns.ones((5,5),ns.uint8)
+new_imgd=cv2.dilate(img,kernel)
+new_img2=cv2.erode(img,kernel)
+new_imgcheck=cv2.morphologyEx(img,cv2.MORPH_OPEN,kernel)
+new_imgcheck1=cv2.morphologyEx(img,cv2.MORPH_CLOSE,kernel)
+
+while True:
+    cv2.imshow('Image', new_img)
+    cv2.imshow('im',img)
+    cv2.imshow('im2', new_img2)
+    cv2.imshow('dilate', new_imgd)
+    cv2.imshow('Morh open', new_imgcheck)
+    cv2.imshow('MORPH close', new_imgcheck1)
+
+    if cv2.waitKey(0) & 0xFF ==27 :
+        break
+cv2.destroyAllWindows()
