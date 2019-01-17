@@ -1,0 +1,18 @@
+import cv2
+import numpy as ns
+
+img= cv2.imread('SampleImage.jpg', 0)           # Loading image
+blur=cv2.blur(img, (5, 5))                      # Blurring image using normal filter
+guassian = cv2.GaussianBlur(img, (5, 5), 0)     # Bluring image using gaussian filter
+median = cv2.medianBlur(img, 5)                 # Bluring image using median filter
+bilateral = cv2.bilateralFilter(img, 9, 75, 75) # Bluring image using bilateral filter
+
+while True:                                     # Displaying images as per filter used
+    cv2.imshow("Blurred", blur)
+    cv2.imshow("Normal", img)
+    cv2.imshow("Gaussian blur", guassian)
+    cv2.imshow("Median blur ", median)
+    cv2.imshow("Bilateral ", bilateral)
+    if cv2.waitKey(0) & 0xFF == 27:
+        break
+cv2.destroyAllWindows()
