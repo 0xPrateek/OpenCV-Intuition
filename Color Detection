@@ -1,0 +1,36 @@
+import cv2
+import numpy as ns
+
+cap = cv2.VideoCapture(0)    # Creating object for video capturing
+
+while(True):
+    ret,frame=cap.read()
+    cv2.imshow("Normal camera ",frame)
+    if ret is True:
+
+        #converting image from BGR to gray
+        newimage=cv2.cvtColor(frame,cv2.COLOR_BGR2HSV)
+
+        #setting up the color range which needed to be extracted
+
+        lower_blue = ns.array([110, 100, 100])        #Detects single color(BLUE)
+        upper_blue = ns.array([130, 255, 255])
+
+        lower_red=ns.array([-10,100,100])
+        upper_red=ns.array([20,255,255])
+
+        #Now we need to extract this color from each frame of the HSV image.
+        mask=cv2.inRange(newimage,lower_red,upper_red)
+
+        unkown=cv2.bitwise_and(frame,frame,mask=mask)
+
+        cv2.imshow("normal image ",frame)
+        cv2.imshow("HSV image ",newimage)
+        cv2.imshow("Masked image",mask)
+        cv2.imshow("Fuckin bitwise image ",unkown)
+
+        if cv2.waitKey(1) & 0xFF == 27:
+            break
+            
+cap.release()
+cv2.destroyAllWindows()
