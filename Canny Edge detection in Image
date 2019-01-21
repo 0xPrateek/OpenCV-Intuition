@@ -1,0 +1,11 @@
+import cv2                                 
+
+img=cv2.imread('SampleImage.jpg',0)         # Loading image
+canny=cv2.Canny(img,100,200)                # Using canny function on image with two parameters 1-> lower threshold, 2-> upper threshold
+
+while True:
+    cv2.imshow("Edged image",canny)        # Displaying image
+    if cv2.waitKey(1) & 0xFF == 27:
+        break
+
+cv2.destroyAllWindows()
