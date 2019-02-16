@@ -1,0 +1,17 @@
+import cv2
+import numpy as ns
+
+img=cv2.imread('SampleImage.jpg',0)    # Loading image in Gray scale
+sobel=cv2.Sobel(img,cv2.CV_64F,0,1,(5,5),ksize=5)
+sarcher=cv2.Sobel(img,cv2.CV_64F,1,0,(5,5),ksize=5)
+laplecian=cv2.Laplacian(img,cv2.CV_64F,ksize=5)
+
+while True:
+    cv2.imshow("img",img)
+    cv2.imshow("sobel",sobel )
+    cv2.imshow("sarcher",sarcher )
+    cv2.imshow("laplecian",laplecian )
+
+    if cv2.waitKey(0) & 0xFF == 27:
+        break
+cv2.destroyAllWindows()
