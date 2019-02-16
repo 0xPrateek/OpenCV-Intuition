@@ -1,0 +1,19 @@
+import cv2
+
+img= cv2.imread('SampleImage.jpg',1)  # Loading Image
+
+print(img.shape)        # Displaying image dimensions
+
+# ROI formula :: image[y:y+h,x:x+w]  where x and y are cordinates
+# and h and w are height and width respectively.
+
+roi_img = img[100:350,100:350]      # Slicing image.
+
+# Displaying Region of image.
+while(True):
+
+    cv2.imshow('ROI ',roi_img)
+    if (cv2.waitKey(1) & 0xFF == ord('q') ):
+        break
+
+cv2.destroyAllWindows()
