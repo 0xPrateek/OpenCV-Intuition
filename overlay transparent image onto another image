@@ -1,0 +1,13 @@
+import cv2
+
+back = cv2.imread('background.jpg')      # Loading the image which will be in background
+overlay = cv2.imread('overlay.png')      # Loading the image which will be overlayed
+
+new_image = cv2.resize(overlay,(960,637))    # Resizing both images and making both of them to be of the same size.
+added_image = cv2.addWeighted(back,1,new_image,0.5,0)  # Overlaying the new_image on background image.
+
+while True:           # Showing image
+    cv2.imshow('Final Image',added_image)
+    if cv2.waitKey(0) & 0xFF ==27:
+        break
+cv2.destroyAllWindows()
