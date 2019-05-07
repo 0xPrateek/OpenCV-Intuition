@@ -2,7 +2,7 @@ import cv2
 import numpy as np
 
 # loading image
-img = cv2.imread('road.jpg', cv2.IMREAD_COLOR)
+img = cv2.imread('image/road.jpg', cv2.IMREAD_COLOR)
 
 # Convert img to grayscale
 gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
