@@ -2,6 +2,9 @@
 
 This repositoriy contains all the study i am pursing in openCV and these programs are part of it.
 
+### Small projects using openCV
+* [Screen Recorder using openCV](https://github.com/0xPrateek/ComputerVision-OpenCV3-Python/tree/master/Screen%20Recorder)
+
 ### Resources
 
 * Homepage: <https://opencv.org>
