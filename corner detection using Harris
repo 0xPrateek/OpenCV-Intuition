@@ -1,0 +1,32 @@
+'''
+    Program name:- Detecting corners using Harris algorithm
+    Author name:- Prateek Mishra
+ 
+'''
+# importing modules
+import cv2
+import numpy as np
+
+# Reading image for corner detection in grayscale
+img = cv2.imread('chessboard.jpg',0)
+
+# Converting pixel values to float32
+float_img = np.float32(gray)
+
+# Applying harris corner detection to the image
+dst = cv2.cornerHarris(float_img,2,3,0.04)
+
+#result is dilated for marking the corners, not important
+dst = cv2.dilate(dst,None)
+
+# Threshold for an optimal value, it may vary depending on the image.
+img[dst>0.01*dst.max()] = [0,0,255]
+
+while True:
+
+    # Displaying image
+    cv2.imshow('Detected corners',img)
+    if cv2.waitKey(0) & 0xff == 27:
+        break
+
+cv2.destroyAllWindows()
